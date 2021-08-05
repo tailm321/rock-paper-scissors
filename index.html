@@ -6,24 +6,81 @@
     <title>Rock, Paper, Scissors!</title>
     <script>
       function computerPlay() {
+        const rock = "rock";
+        const paper = "paper";
+        const scissors = "scissors";
         //generate random number 1-3
         let rand = Math.floor((Math.random() * 3) + 1);
         //depending on number, output rock, paper, or scissor
         switch(rand) {
           case 1:
-            console.log("rock");
-            break;
+            return rock;
           case 2:
-            console.log("paper");
-            break;
+            return paper;
           case 3:
-            console.log("scissor");
-            break;
+            return scissors;
           default:
             console.log("something went wrong");
         }
       }
+      function playRound(playerSelection, computerSelection) {
+        //make player input case-insensitive
+        playerSelection = playerSelection.toLowerCase();
 
+        const lossMsg = "You lose, " + computerSelection + " beats " + playerSelection + "!";
+        const winMsg = "You win, " + playerSelection + " beats " + computerSelection + "!";
+        const tieMsg = "Tie! You both picked " + computerSelection + "!";
+        //compare playerSelection and computerSelection
+        if (playerSelection === "rock") {
+          if (computerSelection === "rock") {
+            return tieMsg;
+          }
+          else if (computerSelection === "paper") {
+            return lossMsg;
+          }
+          else if (computerSelection === "scissors") {
+            return winMsg;
+          }
+          else {
+            console.log("something went wrong");
+          }
+        }
+        else if (playerSelection === "paper") {
+          if (computerSelection === "rock") {
+            return winMsg;
+          }
+          else if (computerSelection === "paper") {
+            return tieMsg;
+          }
+          else if (computerSelection === "scissors") {
+            return lossMsg;
+          }
+          else {
+            console.log("error");
+          }
+        }
+        else if (playerSelection === "scissors") {
+          if (computerSelection === "rock") {
+            return lossMsg;
+          }
+          else if (computerSelection === "paper") {
+            return winMsg;
+          }
+          else if (computerSelection === "scissors") {
+            return tieMsg;
+          }
+          else {
+            console.log("error");
+          }
+        }
+        else {
+          console.log("error");
+        }
+      }
+
+      const playerSelection = "rock";
+      const computerSelection = computerPlay();
+      console.log(playRound(playerSelection, computerSelection));
     </script>
   </head>
 </html>
