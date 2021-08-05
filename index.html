@@ -26,7 +26,6 @@
       function playRound(playerSelection, computerSelection) {
         //make player input case-insensitive
         playerSelection = playerSelection.toLowerCase();
-
         const lossMsg = "You lose, " + computerSelection + " beats " + playerSelection + "!";
         const winMsg = "You win, " + playerSelection + " beats " + computerSelection + "!";
         const tieMsg = "Tie! You both picked " + computerSelection + "!";
@@ -77,10 +76,12 @@
           console.log("error");
         }
       }
-
-      const playerSelection = "rock";
-      const computerSelection = computerPlay();
-      console.log(playRound(playerSelection, computerSelection));
+      function game() {
+        for (var i = 0; i < 5; i++){
+          var playerSelection = prompt("Enter rock, paper, or scissors.");
+          console.log(playRound(playerSelection, computerPlay()));
+        }
+      }
     </script>
   </head>
 </html>
